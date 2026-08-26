@@ -1,4 +1,4 @@
-import Radix_Primitives_Test_Support
+import RadixTest_Support
 import Testing
 
 extension Radix {
