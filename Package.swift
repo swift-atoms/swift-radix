@@ -13,43 +13,39 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Radix Primitive",
-            targets: ["Radix Primitive"]
-        ),
-        .library(
             name: "Radix",
             targets: ["Radix"]
         ),
         .library(
-            name: "Radix Test Support",
-            targets: ["Radix Test Support"]
+            name: "Radix Standard Library Integration",
+            targets: ["Radix Standard Library Integration"]
+        ),
+        .library(
+            name: "Radix Apple Foundation Integration",
+            targets: ["Radix Apple Foundation Integration"]
         ),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Radix Primitive",
+            name: "Radix",
             dependencies: []
         ),
         .target(
-            name: "Radix",
-            dependencies: [
-                "Radix Primitive"
-            ]
+            name: "Radix Standard Library Integration",
+            dependencies: ["Radix"]
         ),
         .target(
-            name: "Radix Test Support",
+            name: "Radix Apple Foundation Integration",
             dependencies: [
-                "Radix"
-            ],
-            path: "Tests/Support"
+                "Radix",
+                "Radix Standard Library Integration",
+            ]
         ),
         .testTarget(
             name: "Radix Tests",
-            dependencies: [
-                "Radix",
-                "Radix Test Support",
-            ]
+            dependencies: ["Radix"],
+            path: "Tests/Radix Tests"
         ),
     ],
     swiftLanguageModes: [.v6]
