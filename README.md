@@ -66,9 +66,9 @@ The package is pre-1.0 — until 0.1.0 is tagged, depend on `branch: "main"` rat
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Radix` | `Sources/Radix/` | The `Radix` model — the type, the standard `binary` / `octal` / `decimal` / `hexadecimal` radixes, digit mapping (`base`, `digit(for:)`, `value(of:)`), and validating construction. Import this. |
-| `Radix Standard Library Integration` | `Sources/Radix Standard Library Integration/` | Extensions of and conformances to Swift standard library types and protocols. |
-| `Radix Apple Foundation Integration` | `Sources/Radix Apple Foundation Integration/` | The only module allowed to import Foundation. |
+| `Radix Primitive` | `Sources/Radix Primitive/` | The `Radix` model — the type, the standard `binary` / `octal` / `decimal` / `hexadecimal` radixes, digit mapping (`base`, `digit(for:)`, `value(of:)`), and validating construction. |
+| `Radix` | `Sources/Radix/` | Umbrella that re-exports the model under the canonical import name. Import this. |
+| `Radix Test Support` | `Tests/Support/` | Re-exports the umbrella for downstream test consumers. |
 
 The package depends only on the Swift standard library. Digit glyphs are `Unicode.Scalar`; digit values are `Int`. Case folding for case-insensitive radixes is ASCII-only, keeping the model usable from Embedded Swift. Foundation-free.
 
