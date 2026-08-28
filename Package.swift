@@ -13,42 +13,20 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Radix Primitive",
-            targets: ["Radix Primitive"]
-        ),
-        .library(
             name: "Radix",
             targets: ["Radix"]
-        ),
-        .library(
-            name: "Radix Test Support",
-            targets: ["Radix Test Support"]
         ),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Radix Primitive",
-            dependencies: []
-        ),
-        .target(
             name: "Radix",
-            dependencies: [
-                "Radix Primitive"
-            ]
-        ),
-        .target(
-            name: "Radix Test Support",
-            dependencies: [
-                "Radix"
-            ],
-            path: "Tests/Support"
+            dependencies: []
         ),
         .testTarget(
             name: "Radix Tests",
             dependencies: [
-                "Radix",
-                "Radix Test Support",
+                .target(name: "Radix"),
             ]
         ),
     ],

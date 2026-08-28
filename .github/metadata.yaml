@@ -1,7 +1,7 @@
 # .github/metadata.yaml
 description: "Positional-numeral-base model for Swift — a radix value paired with its ordered digit alphabet, with single-digit value↔glyph mapping. Standard binary, octal, decimal, and hexadecimal radixes included; Foundation-free."
 topics:
-  - molecules
+  - primitives
   - radix
   - numeral-system
   - digits

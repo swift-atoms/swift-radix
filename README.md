@@ -45,7 +45,7 @@ Rendering an integer to a base-N string needs a digit alphabet *and* a division-
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/swift-molecules/swift-radix.git", branch: "main")
+    .package(url: "https://github.com/swift-atoms/swift-radix.git", branch: "main")
 ]
 ```
 
@@ -66,9 +66,7 @@ The package is pre-1.0 — until 0.1.0 is tagged, depend on `branch: "main"` rat
 
 | Product | Target | Purpose |
 |---------|--------|---------|
-| `Radix Primitive` | `Sources/Radix Primitive/` | The `Radix` model — the type, the standard `binary` / `octal` / `decimal` / `hexadecimal` radixes, digit mapping (`base`, `digit(for:)`, `value(of:)`), and validating construction. |
-| `Radix` | `Sources/Radix/` | Umbrella that re-exports the model under the canonical import name. Import this. |
-| `Radix Test Support` | `Tests/Support/` | Re-exports the umbrella for downstream test consumers. |
+| `Radix` | `Sources/Radix/` | The `Radix` model — the type, the standard `binary` / `octal` / `decimal` / `hexadecimal` radixes, digit mapping (`base`, `digit(for:)`, `value(of:)`), and validating construction. |
 
 The package depends only on the Swift standard library. Digit glyphs are `Unicode.Scalar`; digit values are `Int`. Case folding for case-insensitive radixes is ASCII-only, keeping the model usable from Embedded Swift. Foundation-free.
 
