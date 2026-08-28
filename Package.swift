@@ -3,7 +3,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "swift-radix-primitives",
+    name: "swift-radix",
     platforms: [
         .macOS(.v27),
         .iOS(.v27),
@@ -13,42 +13,20 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "Radix Primitive",
-            targets: ["Radix Primitive"]
-        ),
-        .library(
-            name: "Radix Primitives",
-            targets: ["Radix Primitives"]
-        ),
-        .library(
-            name: "Radix Primitives Test Support",
-            targets: ["Radix Primitives Test Support"]
+            name: "Radix",
+            targets: ["Radix"]
         ),
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "Radix Primitive",
+            name: "Radix",
             dependencies: []
         ),
-        .target(
-            name: "Radix Primitives",
-            dependencies: [
-                "Radix Primitive"
-            ]
-        ),
-        .target(
-            name: "Radix Primitives Test Support",
-            dependencies: [
-                "Radix Primitives"
-            ],
-            path: "Tests/Support"
-        ),
         .testTarget(
-            name: "Radix Primitives Tests",
+            name: "Radix Tests",
             dependencies: [
-                "Radix Primitives",
-                "Radix Primitives Test Support",
+                .target(name: "Radix"),
             ]
         ),
     ],
