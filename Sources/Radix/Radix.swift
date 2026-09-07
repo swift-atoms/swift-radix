@@ -11,4 +11,4 @@ public struct Radix {
     }
 }
 
-extension Radix: Sendable {}
+extension Radix: Swift.Sendable {}

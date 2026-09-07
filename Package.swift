@@ -13,8 +13,8 @@ let package = Package(
     ],
     products: [
         .library(name: "Radix", targets: ["Radix"]),
-        .library(name: "Radix Standard Library Integration", targets: ["Radix Standard Library Integration"]),
-        .library(name: "Radix Foundation Library Integration", targets: ["Radix Foundation Library Integration"]),
+
+        .library(name: "Radix Foundation Integration", targets: ["Radix Foundation Integration"]),
         .library(name: "Radix Test Support", targets: ["Radix Test Support"]),
     ],
     dependencies: [],
@@ -25,20 +25,13 @@ let package = Package(
             ],
             path: "Sources/Radix"
         ),
+        
         .target(
-            name: "Radix Standard Library Integration",
+            name: "Radix Foundation Integration",
             dependencies: [
                 .target(name: "Radix"),
             ],
-            path: "Sources/Radix Standard Library Integration"
-        ),
-        .target(
-            name: "Radix Foundation Library Integration",
-            dependencies: [
-                .target(name: "Radix"),
-                .target(name: "Radix Standard Library Integration"),
-            ],
-            path: "Sources/Radix Foundation Library Integration"
+            path: "Sources/Radix Foundation Integration"
         ),
         .target(
             name: "Radix Test Support",
@@ -52,8 +45,7 @@ let package = Package(
             dependencies: [
                 .target(name: "Radix"),
                 .target(name: "Radix Test Support"),
-                .target(name: "Radix Standard Library Integration"),
-                .target(name: "Radix Foundation Library Integration"),
+                .target(name: "Radix Foundation Integration"),
             ],
             path: "Tests/Radix Tests"
         ),
