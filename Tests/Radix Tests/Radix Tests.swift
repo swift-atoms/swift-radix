@@ -2,17 +2,17 @@ import Radix
 import Testing
 
 extension Radix {
-    @Suite struct Test {}
+    @Suite struct `Radices map validated alphabets to positional digit values` {}
 }
 
-extension Radix.Test {
-    @Suite struct Standard {}
-    @Suite struct Mapping {}
-    @Suite struct Construction {}
-    @Suite struct `Edge Case` {}
+extension Radix.`Radices map validated alphabets to positional digit values` {
+    @Suite struct `Standard radices expose their expected bases and alphabets` {}
+    @Suite struct `Radix lookup maps values and glyphs in both directions` {}
+    @Suite struct `Radix construction validates alphabets and case folding rules` {}
+    @Suite struct `Radices preserve nonletter glyphs and satisfy sendability` {}
 }
 
-extension Radix.Test.Standard {
+extension Radix.`Radices map validated alphabets to positional digit values`.`Standard radices expose their expected bases and alphabets` {
     @Test
     func `binary has base two`() {
         #expect(Radix.binary.base == 2)
@@ -39,7 +39,7 @@ extension Radix.Test.Standard {
     }
 }
 
-extension Radix.Test.Mapping {
+extension Radix.`Radices map validated alphabets to positional digit values`.`Radix lookup maps values and glyphs in both directions` {
     @Test
     func `digit for value returns the glyph`() {
         #expect(Radix.decimal.digit(for: 0) == "0")
@@ -74,7 +74,7 @@ extension Radix.Test.Mapping {
     }
 
     @Test
-    func `round trips value through glyph`() {
+    func `Radix digit values round trip through their glyphs`() {
         (0..<Radix.hexadecimal.base).forEach { value in
             let glyph = Radix.hexadecimal.digit(for: value)
             #expect(glyph != nil)
@@ -85,7 +85,7 @@ extension Radix.Test.Mapping {
     }
 }
 
-extension Radix.Test.Construction {
+extension Radix.`Radices map validated alphabets to positional digit values`.`Radix construction validates alphabets and case folding rules` {
     @Test
     func `custom radix maps by alphabet position`() throws(Radix.Error) {
         let base4 = try Radix(digits: ["w", "x", "y", "z"])
@@ -108,14 +108,14 @@ extension Radix.Test.Construction {
     }
 
     @Test
-    func `insufficient digits throws`() {
+    func `Radix construction rejects alphabets with too few digits`() {
         #expect(throws: Radix.Error.insufficientDigits(count: 1)) {
             _ = try Radix(digits: ["0"])
         }
     }
 
     @Test
-    func `duplicate digit throws`() {
+    func `Radix construction rejects duplicate alphabet digits`() {
         #expect(throws: Radix.Error.duplicateDigit("x")) {
             _ = try Radix(digits: ["x", "y", "x"])
         }
@@ -129,7 +129,7 @@ extension Radix.Test.Construction {
     }
 }
 
-extension Radix.Test.`Edge Case` {
+extension Radix.`Radices map validated alphabets to positional digit values`.`Radices preserve nonletter glyphs and satisfy sendability` {
     @Test
     func `non letter glyphs are unaffected by case folding`() throws(Radix.Error) {
         let radix = try Radix(digits: ["!", "@", "#"], casing: .insensitive)
