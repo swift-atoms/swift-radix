@@ -45,7 +45,6 @@ let package = Package(
             dependencies: [
                 .target(name: "Radix"),
                 .target(name: "Radix Test Support"),
-                .target(name: "Radix Foundation Integration"),
             ],
             path: "Tests/Radix Tests"
         ),
@@ -53,7 +52,7 @@ let package = Package(
     swiftLanguageModes: [.v6]
 )
 
-for target in package.targets where ![.system, .binary, .plugin].contains(target.type) {
+for target in package.targets where ![.system, .binary, .plugin, .macro].contains(target.type) {
     target.swiftSettings = (target.swiftSettings ?? []) + [
         .strictMemorySafety(),
         .enableUpcomingFeature("ExistentialAny"),

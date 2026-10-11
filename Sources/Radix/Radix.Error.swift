@@ -1,6 +1,6 @@
 extension Radix {
 
-    public enum Error: Swift.Error, Sendable, Equatable, Hashable {
+    public enum Error: Swift::Error, Sendable, Equatable, Hashable {
 
         case insufficientDigits(count: Int)
 
