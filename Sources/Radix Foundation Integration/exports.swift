@@ -1,2 +1,2 @@
-@_exported public import Radix
 import Foundation
+@_exported public import Radix
