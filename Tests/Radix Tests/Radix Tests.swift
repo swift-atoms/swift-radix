@@ -1,18 +1,20 @@
 import Radix
 import Testing
 
-extension Radix {
+enum `Radix Tests` {}
+
+extension `Radix Tests` {
     @Suite struct `Radices map validated alphabets to positional digit values` {}
 }
 
-extension Radix.`Radices map validated alphabets to positional digit values` {
+extension `Radix Tests`.`Radices map validated alphabets to positional digit values` {
     @Suite struct `Standard radices expose their expected bases and alphabets` {}
     @Suite struct `Radix lookup maps values and glyphs in both directions` {}
     @Suite struct `Radix construction validates alphabets and case folding rules` {}
     @Suite struct `Radices preserve nonletter glyphs and satisfy sendability` {}
 }
 
-extension Radix.`Radices map validated alphabets to positional digit values`.`Standard radices expose their expected bases and alphabets` {
+extension `Radix Tests`.`Radices map validated alphabets to positional digit values`.`Standard radices expose their expected bases and alphabets` {
     @Test
     func `binary has base two`() {
         #expect(Radix.binary.base == 2)
@@ -39,7 +41,7 @@ extension Radix.`Radices map validated alphabets to positional digit values`.`St
     }
 }
 
-extension Radix.`Radices map validated alphabets to positional digit values`.`Radix lookup maps values and glyphs in both directions` {
+extension `Radix Tests`.`Radices map validated alphabets to positional digit values`.`Radix lookup maps values and glyphs in both directions` {
     @Test
     func `digit for value returns the glyph`() {
         #expect(Radix.decimal.digit(for: 0) == "0")
@@ -85,7 +87,7 @@ extension Radix.`Radices map validated alphabets to positional digit values`.`Ra
     }
 }
 
-extension Radix.`Radices map validated alphabets to positional digit values`.`Radix construction validates alphabets and case folding rules` {
+extension `Radix Tests`.`Radices map validated alphabets to positional digit values`.`Radix construction validates alphabets and case folding rules` {
     @Test
     func `custom radix maps by alphabet position`() throws(Radix.Error) {
         let base4 = try Radix(digits: ["w", "x", "y", "z"])
@@ -129,7 +131,7 @@ extension Radix.`Radices map validated alphabets to positional digit values`.`Ra
     }
 }
 
-extension Radix.`Radices map validated alphabets to positional digit values`.`Radices preserve nonletter glyphs and satisfy sendability` {
+extension `Radix Tests`.`Radices map validated alphabets to positional digit values`.`Radices preserve nonletter glyphs and satisfy sendability` {
     @Test
     func `non letter glyphs are unaffected by case folding`() throws(Radix.Error) {
         let radix = try Radix(digits: ["!", "@", "#"], casing: .insensitive)
